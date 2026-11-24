@@ -1,0 +1,27 @@
+export * from './Controller.js'
+export * from './GameAssets.js'
+export * from './Device.js'
+export * from './DI.js'
+export * from './Game.js'
+export * from './Lifecycle.js'
+export * from './machine/Machine.js'
+export * from './machine/MachineContext.js'
+export * from './machine/MachineEvents.js'
+export * from './machine/MachineStates.js'
+export * from './machine/stateActions/StateAction.js'
+export * from './machine/stateActions'
+export * from './Model.js'
+export * from './view/GameObject.js'
+export * from './view/View.js'
+export * from './view/ViewAssets.js'
+export * from './view/ViewConfig.js'
+
+// The libraries games are built with. Games import them from here, never directly:
+// the SDK is the only package that declares them, so every game and the library share one copy and one version.
+export * as PIXI from 'pixi.js'
+export { gsap } from 'gsap'
+export { Spine } from '@esotericsoftware/spine-pixi-v8'
+export { sound, Sound } from '@pixi/sound'
+// nixie-fx's Pixi runtime: particle effects exported from the nixie-fx editor, drawn into a Pixi container.
+export * as Vfx from 'nixie-fx/pixi'
+export type { IMediaInstance } from '@pixi/sound'
