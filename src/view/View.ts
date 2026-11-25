@@ -18,12 +18,17 @@ export abstract class View<S extends ViewConfig = ViewConfig> extends Container 
     this.init()
   }
 
-  override destroy(options?: DestroyOptions): void {
+  /**
+   * Destroys the view and, by default, everything in it: each part's own `destroy()` then
+   * runs, which stops its tweens and its shared-ticker callbacks and drops its video. Textures
+   * are kept (`texture: false`): they belong to the assets cache, shared by the next game.
+   */
+  override destroy(options: DestroyOptions = { children: true }): void {
     if (!this._isInitialized) {
       return
     }
 
-    super.destroy()
+    super.destroy(options)
     this._isInitialized = false
   }
 

@@ -1,5 +1,5 @@
 import { Spine } from '@esotericsoftware/spine-pixi-v8'
-import { Assets, Container, Sprite } from 'pixi.js'
+import { Assets, Container, Sprite, type DestroyOptions } from 'pixi.js'
 
 import { Device } from '../Device.js'
 
@@ -13,8 +13,9 @@ export class GameObject extends Container {
         this.onOrientationChanged()
     }
 
-    override destroy(): void {
-        super.destroy()
+    /** Destroys it, its children too when `options` say so, and leaves the orientation listeners. */
+    override destroy(options?: DestroyOptions): void {
+        super.destroy(options)
 
         this._unsubscribe()
     }

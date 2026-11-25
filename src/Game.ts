@@ -163,7 +163,7 @@ export class Game {
     protected teardown(): void {
         document.removeEventListener('visibilitychange', this.handleVisibility)
         this._controller?.destroy()
-        Object.values(this._views).forEach((view) => view.destroy())
+        Object.values(this._views).forEach((view) => view.destroy({ children: true }))
         // Not `destroy(true)`: that also releases Pixi's global pools (batches, textures, canvases),
         // which every other game on the page still draws with: the next to render crashes.
         this.app.destroy({ removeView: true }, { children: true })
